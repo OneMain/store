@@ -16,6 +16,10 @@ gem 'therubyracer'
 gem 'simple_form'
 # bootstrap
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+# 上传组件
+gem 'carrierwave'
+# 图片处理
+gem 'mini_magick'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
