@@ -1,0 +1,7 @@
+= simple_form_for @product, :html => { :class => 'inline_form' } do |f|
+  = f.input :title
+  = f.input :description
+  = f.input :image_url ,as: :file
+  = f.input :price
+
+  = f.button :submit, class: 'btn-primary'

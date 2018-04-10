@@ -1,0 +1,10 @@
+zh-CN:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        id: 商品编号
+        title: 商品名称
+        description: 描述
+        price: 价格
