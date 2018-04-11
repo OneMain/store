@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :line_items
+  resources :line_items do
+    member do
+      patch :change_quantity
+      post :change_quantity
+    end
+  end
   resources :carts
   get 'store/index', as: :store_index
   root to: 'store#index'

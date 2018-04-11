@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 
@@ -32,6 +33,9 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     redirect_to @product, notice: 'Product was successfully updated.'
+    @products = Product.all
+    ActionCable.server.broadcast 'products',
+                                 html: render_to_string('store/index',layout:false)
 
   end
 

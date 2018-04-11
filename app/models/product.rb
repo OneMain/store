@@ -21,7 +21,7 @@ class Product < ApplicationRecord
 
   # 确保没有商品在引用此产品
   def ensure_not_referenced_by_any_item
-    unless line_items.empty?
+    if line_items.present?
       errors.add(:base,'line item present')
       throw :abort
     end

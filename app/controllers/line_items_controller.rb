@@ -1,9 +1,7 @@
 class LineItemsController < ApplicationController
 
-  include CurrentCart
-
   before_action :set_cart,only:[:create]
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_line_item, only: [:show, :edit, :update, :destroy,:change_quantity]
 
   # GET /line_items
   # GET /line_items.json
@@ -30,10 +28,10 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
-
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to store_index_url, notice: 'Line item was successfully created.' }
+        format.js { @current_item = @line_item}
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -48,6 +46,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.update(line_item_params)
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -55,6 +54,21 @@ class LineItemsController < ApplicationController
       end
     end
   end
+
+  def change_quantity
+    if params[:is_add]
+      @line_item.quantity += 1
+    else
+      if @line_item.quantity > 1
+        @line_item.quantity -= 1
+        @line_item.save!
+      else
+        @line_item.destroy
+      end
+    end
+    render js: @current_item = @line_item
+  end
+
 
   # DELETE /line_items/1
   # DELETE /line_items/1.json

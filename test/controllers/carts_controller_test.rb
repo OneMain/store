@@ -48,4 +48,14 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to store_index_url
   end
+
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      post line_items_url,params: { product_id: products(:iphone_for).id},xhr:true
+    end
+    assert_response :success
+    assert_select_jquery :html,'#cart' do
+      assert_select 'tr#current_item td',/iphone_for/
+    end
+  end
 end
