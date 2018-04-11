@@ -1,8 +1,9 @@
 // 侧边导航栏
 #side
   #cart
-    = hidden_div_if( @cart.try(:line_items).nil?, id:'cart') do
-      =render @cart
+    - if @cart
+      = hidden_div_if( @cart.try(:line_items).nil?, id:'cart') do
+        -#=render @cart
   ul.nav.navbar-nav
     li.active
       = link_to "Home",root_path

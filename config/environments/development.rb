@@ -54,4 +54,5 @@ Rails.application.configure do
   # channel可能会存在隐患,在开发模式下,rails默认只允许从本地主机访问频道,
   # 如果想多台电脑进行开发,必须禁用这个检查
   config.disable_request_forgery_protection = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  devise_for :users, path: "account", controllers: {
+      omniauth_callbacks: "auth/omniauth_callbacks"
+  }
+  get 'store/index', as: :store_index
+
   resources :line_items do
     member do
       patch :change_quantity
@@ -6,9 +12,10 @@ Rails.application.routes.draw do
     end
   end
   resources :carts
-  get 'store/index', as: :store_index
-  root to: 'store#index'
 
   resources :products
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :orders
+
+  root to: 'store#index'
 end
