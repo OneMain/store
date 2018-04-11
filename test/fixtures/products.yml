@@ -4,8 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+iphone_for:
+  title:  Iphone4
+  description:
+    iPhone 4是结合照相手机、个人数码助理、媒体播放器以及无线通信设备的掌上设备，
+    iPhone4延续自iPhone一代的多点触摸（Multi-touch）屏界面，并首次加入视网膜屏幕、前置摄像头"
+  price: 2999
+iphone_five:
+  title:  Iphone5
+  description:
+    iPhone 5是结合照相手机、个人数码助理、媒体播放器以及无线通信设备的掌上设备，
+    iPhone5延续自iPhone一代的多点触摸（Multi-touch）屏界面，并首次加入视网膜屏幕、前置摄像头"
+  price: 3999

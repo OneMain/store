@@ -6,7 +6,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # 存储位置： uploads/product/file/1
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.attachmentable.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # 缩略图

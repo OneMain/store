@@ -14,3 +14,5 @@ zh-CN:
           attributes:
             title:
               taken: 该商品名称已存在
+            price:
+              taken: 价格需要大于0.01元

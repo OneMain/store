@@ -128,4 +128,13 @@ zh-CN:
       x_weeks:
         one: 一周
         other: "%{count} 周"
+  errors:
+    models:
+      product:
+        attributes:
+          price:
+            greater_than_or_equal_to: 大于等于%{count}
+    messages:
+      taken: 已经被使用
+
 
