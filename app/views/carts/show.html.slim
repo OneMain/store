@@ -1,8 +1,12 @@
 
 h2 我的购物车
-ul
+table.table.table-condensed
   - @cart.line_items.each do |item|
-    li= item.product.title
-=> link_to 'Edit', edit_cart_path(@cart)
-'|
-=< link_to 'Back', carts_path
+    tr
+      td= "#{item.quantity} * "
+      td= item.product.title
+      td= number_to_currency(item.total_price)
+    tr
+      td.text-right{colspan="2" } 合计:
+      td= number_to_currency(@cart.total_price)
+= button_to '清空购物车',@cart,method: :delete,data:{ confirm: '确定清空您的购物车吗?'},class: 'btn btn-default'

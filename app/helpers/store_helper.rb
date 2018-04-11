@@ -1,5 +1,6 @@
 module StoreHelper
 
+=begin
   def fetch_products
     products =  $namespaced_redis.get("products")
     if products.blank?
@@ -7,8 +8,8 @@ module StoreHelper
       products = Product.all.to_json
       $namespaced_redis.set("products", products)
     end
-    @products = JSON.load products
+    JSON.load products
   end
+=end
 
-  def 
 end
