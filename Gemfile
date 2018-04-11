@@ -20,6 +20,11 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 gem 'carrierwave'
 # 图片处理
 gem 'mini_magick'
+#redis 缓存
+gem 'redis-rails'
+gem 'redis-namespace'
+# 集群
+#gem 'hiredis'
 group :development, :test do
   gem 'byebug', platform: :mri
 end

@@ -1,27 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 REDIS_CONFIG = YAML.load(File.open(Rails.root.join('config/redis.yml'))).symbolize_keys
 default_config = REDIS_CONFIG[:default].symbolize_keys
 redis_config = default_config.merge(REDIS_CONFIG[Rails.env.to_sym].symbolize_keys) if REDIS_CONFIG[Rails.env.to_sym]
@@ -29,11 +5,6 @@ redis_config = default_config.merge(REDIS_CONFIG[Rails.env.to_sym].symbolize_key
 $redis = Redis.new(redis_config)
 # @see https://github.com/resque/redis-namespace
 $namespaced_redis = Redis::Namespace.new(redis_config[:namespace], redis: $redis) if redis_config[:namespace]
-
-# redis -> object
-# @see https://github.com/nateware/redis-objects
-# require 'connection_pool'
-# Redis::Objects.redis = ConnectionPool.new(size: 5, timeout: 5) { $redis }
 
 # To clear out the db before each test and development
 begin
@@ -50,5 +21,3 @@ rescue Exception => e
   cmd = "kill -SIGINT #{rails_pid}"
   `#{cmd}`
 end
-
-
